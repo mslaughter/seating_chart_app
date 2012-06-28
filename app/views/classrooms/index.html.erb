@@ -1,0 +1,6 @@
+<% provide(:title, 'Classrooms') %>
+<h1>Classrooms</h1>
+
+<% @user = User.find(params[:id]) %>
+
+<%= link_to "Create Classroom", newclassroom_path, class: "btn btn-primary" %>

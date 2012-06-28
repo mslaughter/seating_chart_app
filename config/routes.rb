@@ -1,16 +1,29 @@
 SeatingChartApp::Application.routes.draw do
+
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions,   only: [:new, :create, :destroy]
+  resources :classrooms
+  resources :tables
+  resources :students
 
   root to: 'static_pages#home'
   
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
+  match '/signup',        to: 'users#new'
+  match '/signin',        to: 'sessions#new'
+  match '/signout',       to: 'sessions#destroy', via: :delete
+  match '/help',          to: 'static_pages#help'
+  match '/about',         to: 'static_pages#about'
+  match '/contact',       to: 'static_pages#contact'
+  match '/newclassroom',  to: 'classrooms#new', as: :newclassroom
   
+  
+  match 'users/:id/classrooms/index',                   to: 'classrooms#index', as: :classrooms_index
+  match 'classrooms/:id/tables/display_form',           to: 'tables#display_form', as: :tables_display_form
+  match 'classrooms/:id/addtables',                     to: 'tables#addtables', as: :addtables
+  match 'classrooms/:id/students/display_form',         to: 'students#display_form', as: :students_display_form
+  match 'classrooms/:id/addstudents',                   to: 'students#addstudents', as: :addstudents
+  match 'classrooms/:id/students/display_form_pinned',  to: 'students#display_form_pinned', as: :display_form_pin
+  match 'classrooms/:id/students/add_pin_table',        to: 'students#add_pin_table', as: :add_pin_table
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

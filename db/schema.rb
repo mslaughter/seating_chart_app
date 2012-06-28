@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625201612) do
+ActiveRecord::Schema.define(:version => 20120628214730) do
+
+  create_table "classrooms", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "num_tables"
+    t.integer  "iterations"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token"
+    t.integer  "num_students"
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "name"
+    t.integer  "classroom_id"
+    t.boolean  "pin",          :default => false
+    t.string   "pinned_table"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "tables", :force => true do |t|
+    t.integer  "classroom_id"
+    t.integer  "max_students"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

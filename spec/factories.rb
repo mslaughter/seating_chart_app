@@ -9,4 +9,9 @@ FactoryGirl.define do
       admin true
     end
   end
+  
+  factory :arrangement do
+    sequence(:class_id) { |n| "Class #{n}" }
+    user
+  end
 end
