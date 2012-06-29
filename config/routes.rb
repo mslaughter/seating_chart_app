@@ -16,14 +16,14 @@ SeatingChartApp::Application.routes.draw do
   match '/contact',       to: 'static_pages#contact'
   match '/newclassroom',  to: 'classrooms#new', as: :newclassroom
   
-  
-  match 'users/:id/classrooms/index',                   to: 'classrooms#index', as: :classrooms_index
   match 'classrooms/:id/tables/display_form',           to: 'tables#display_form', as: :tables_display_form
   match 'classrooms/:id/addtables',                     to: 'tables#addtables', as: :addtables
   match 'classrooms/:id/students/display_form',         to: 'students#display_form', as: :students_display_form
   match 'classrooms/:id/addstudents',                   to: 'students#addstudents', as: :addstudents
   match 'classrooms/:id/students/display_form_pinned',  to: 'students#display_form_pinned', as: :display_form_pin
   match 'classrooms/:id/students/add_pin_table',        to: 'students#add_pin_table', as: :add_pin_table
+  match 'classrooms/:id',                               to: 'classrooms#show', as: :display_classroom
+  match 'classrooms/:id/results',                       to: 'classrooms#results', as: :results
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

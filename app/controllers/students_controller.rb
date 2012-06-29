@@ -17,7 +17,18 @@ class StudentsController < ApplicationController
       @classroom.students.build(params["student #{t}"])
     end
     if @classroom.save
-      redirect_to display_form_pin_path
+      is_pin_path = false
+      for student in @classroom.students
+        if student.pin
+          is_pin_path = true
+          break
+        end
+      end
+      if is_pin_path
+        redirect_to display_form_pin_path(@classroom.id)
+      else
+        redirect_to results_path(@classroom.id)
+      end
     else
       render 'new'
     end
@@ -33,7 +44,7 @@ class StudentsController < ApplicationController
       end
     end
     if @classroom.save
-      redirect_to root_path
+      redirect_to results_path(@classroom.id)
     else
       render 'new'
     end

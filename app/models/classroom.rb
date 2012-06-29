@@ -2,15 +2,15 @@
 #
 # Table name: classrooms
 #
-#  id             :integer         primary key
-#  name           :string(255)
-#  user_id        :integer
-#  num_tables     :integer
-#  iterations     :integer
-#  created_at     :datetime
-#  updated_at     :datetime
-#  remember_token :string(255)
-#  num_students   :integer
+#  id           :integer         not null, primary key
+#  user_id      :integer
+#  name         :string(255)
+#  num_tables   :integer
+#  num_students :integer
+#  iterations   :integer
+#  results      :string(255)
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
 #
 
 class Classroom < ActiveRecord::Base
@@ -33,5 +33,4 @@ class Classroom < ActiveRecord::Base
     self.num_tables ||= 0
     self.num_students ||= 0
   end
-  
 end
