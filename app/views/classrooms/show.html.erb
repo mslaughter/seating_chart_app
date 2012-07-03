@@ -4,16 +4,16 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th><%= "Table Number" %></th>
+			<th><%= "" %></th>
 			<% for i in (1..@classroom.tables.length) %>
-				<th><%= i %></th>
+				<th><%= "Table #{i}" %></th>
 			<% end %>
 		</tr>
 	</thead>
 	<tbody>
 		<% for iteration in @results_hash.keys() %>
 		<tr>
-			<td><%= iteration %></td>
+			<td><%= "Session #{iteration}" %></td>
 			<% for table in @results_hash[iteration].keys() %>
 				<% nice_names = "" %>
 				<% for name in @results_hash[iteration][table] %>
